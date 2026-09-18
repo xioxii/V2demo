@@ -1,0 +1,242 @@
+name: Import Latest Release Archive
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-release
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download archive from latest release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$RUNNER_TEMP/release"
+          cd "$RUNNER_TEMP/release"
+
+          echo "Checking latest release..."
+
+          gh release view \
+            --repo "$REPO" \
+            --json assets \
+            --jq '.assets[].name' \
+            | grep -E '\.(tar\.gz|tgz|tar\.xz|txz|tar|zip)$' \
+            | tail -n 1 > asset.txt || true
+
+          ASSET="$(cat asset.txt)"
+
+          if [ -z "$ASSET" ]; then
+            echo "::error::No supported archive found in latest release."
+            exit 1
+          fi
+
+          echo "Archive found: $ASSET"
+
+          echo "ASSET=$ASSET" >> "$GITHUB_ENV"
+
+          gh release download \
+            --repo "$REPO" \
+            --pattern "$ASSET" \
+            --dir "$RUNNER_TEMP/release"
+
+      - name: Extract archive
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ARCHIVE="$RUNNER_TEMP/release/$ASSET"
+          EXTRACT="$RUNNER_TEMP/extracted"
+          PAYLOAD="$RUNNER_TEMP/payload"
+
+          rm -rf "$EXTRACT" "$PAYLOAD"
+
+          mkdir -p "$EXTRACT"
+          mkdir -p "$PAYLOAD"
+
+          echo "Extracting:"
+          echo "$ARCHIVE"
+
+          case "$ARCHIVE" in
+            *.tar.gz|*.tgz)
+              tar -xzf "$ARCHIVE" -C "$EXTRACT"
+              ;;
+
+            *.tar.xz|*.txz)
+              tar -xJf "$ARCHIVE" -C "$EXTRACT"
+              ;;
+
+            *.tar)
+              tar -xf "$ARCHIVE" -C "$EXTRACT"
+              ;;
+
+            *.zip)
+              unzip -q "$ARCHIVE" -d "$EXTRACT"
+              ;;
+
+            *)
+              echo "::error::Unsupported archive format."
+              exit 1
+              ;;
+          esac
+
+          # Remove macOS metadata if present
+          rm -rf "$EXTRACT/__MACOSX"
+
+          echo
+          echo "Top-level extracted contents:"
+          ls -la "$EXTRACT"
+
+          shopt -s dotglob nullglob
+
+          ITEMS=("$EXTRACT"/*)
+
+          #
+          # IMPORTANT:
+          #
+          # If archive contains:
+          #
+          # MT6890_PHASE1_SOURCE/
+          #   target/
+          #   package/
+          #   ...
+          #
+          # We copy:
+          #
+          # target/
+          # package/
+          # ...
+          #
+          # NOT:
+          #
+          # MT6890_PHASE1_SOURCE/target/
+          #
+
+          if [ "${#ITEMS[@]}" -eq 1 ] && [ -d "${ITEMS[0]}" ]; then
+
+            echo
+            echo "Single wrapper directory detected:"
+            echo "${ITEMS[0]}"
+            echo
+            echo "Importing CONTENTS of wrapper directory..."
+
+            cp -a "${ITEMS[0]}"/. "$PAYLOAD"/
+
+          else
+
+            echo
+            echo "Archive has multiple root items."
+            echo "Importing them directly..."
+
+            cp -a "$EXTRACT"/. "$PAYLOAD"/
+
+          fi
+
+          #
+          # Never import Git metadata from archive
+          #
+
+          rm -rf "$PAYLOAD/.git"
+
+          #
+          # Do not allow archive to replace this workflow
+          #
+
+          rm -rf "$PAYLOAD/.github/workflows"
+
+          echo
+          echo "Final payload:"
+          find "$PAYLOAD" \
+            -mindepth 1 \
+            -maxdepth 2 \
+            -print | head -200
+
+      - name: Replace repository with extracted source
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PAYLOAD="$RUNNER_TEMP/payload"
+
+          echo "Cleaning old repository contents..."
+
+          #
+          # Delete everything in repository root
+          # EXCEPT:
+          #
+          # .git
+          # .github
+          #
+
+          find . \
+            -mindepth 1 \
+            -maxdepth 1 \
+            ! -name '.git' \
+            ! -name '.github' \
+            -exec rm -rf {} +
+
+          mkdir -p .github/workflows
+
+          echo "Copying extracted source..."
+
+          rsync -a \
+            --delete \
+            --exclude='.git/' \
+            --exclude='.github/workflows/' \
+            "$PAYLOAD"/ ./
+
+          echo
+          echo "Repository root after import:"
+          ls -la
+
+      - name: Commit extracted source
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes detected."
+            exit 0
+          fi
+
+          echo
+          echo "Changes:"
+          git status --short
+
+          git commit \
+            -m "Import extracted contents from release: $ASSET"
+
+      - name: Push to repository
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BRANCH="${{ github.event.repository.default_branch }}"
+
+          echo "Pushing to branch: $BRANCH"
+
+          git push origin "HEAD:$BRANCH"
