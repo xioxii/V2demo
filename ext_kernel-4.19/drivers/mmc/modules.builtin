@@ -1,0 +1,7 @@
+kernel/drivers/mmc/core/mmc_core.ko
+kernel/drivers/mmc/core/pwrseq_simple.ko
+kernel/drivers/mmc/core/pwrseq_emmc.ko
+kernel/drivers/mmc/core/mmc_block.ko
+kernel/drivers/mmc/host/mtk-sd.ko
+kernel/drivers/mmc/host/cqhci.ko
+kernel/drivers/mmc/host/mediatek/msdc.ko

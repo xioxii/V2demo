@@ -1,0 +1,30 @@
+!<thin>
+//                                              212       `
+core.o/
+dummy.o/
+fixed-helper.o/
+helpers.o/
+devres.o/
+of_regulator.o/
+fixed.o/
+gpio-regulator.o/
+mt6315-regulator.o/
+mt6315-misc.o/
+mt6330-regulator.o/
+mtk-dvfsrc-regulator.o/
+pwm-regulator.o/
+vctrl-regulator.o/
+/0              0           0     0     644     678920    `
+/8              0           0     0     644     220848    `
+/17             0           0     0     644     200968    `
+/33             0           0     0     644     144320    `
+/44             0           0     0     644     263800    `
+/54             0           0     0     644     260400    `
+/70             0           0     0     644     250448    `
+/79             0           0     0     644     269848    `
+/97             0           0     0     644     301880    `
+/117            0           0     0     644     97472     `
+/132            0           0     0     644     278672    `
+/152            0           0     0     644     125008    `
+/176           /0           0     0     644     265120    `
+/193            0           0     0     644     149416    `

@@ -1,0 +1,45 @@
+Partition_Name,Type,Size_KB,Region,Reserved,Download,Download_File,OTA_Update,EmptyBoot_Needed,Operation_Type,Default_Exist
+preloader,Raw data,4096,NAND_USER,N,Y,AUTO,Y,N,BOOTLOADERS,Y
+preloader_backup,Raw data,2048,NAND_USER,N,Y,AUTO,Y,N,BOOTLOADERS,Y
+proinfo,Raw data,1024,NAND_USER,N,N,NONE,N,N,PROTECTED,Y
+misc,Raw data,1024,NAND_USER,N,N,NONE,N,N,AUTO,Y
+para,Raw data,1024,NAND_USER,N,N,NONE,N,N,AUTO,Y
+expdb,Raw data,20480,NAND_USER,N,N,NONE,N,N,AUTO,Y
+mcf1_a,YAFFS2,8192,NAND_USER,N,Y,MCF_OTA_1.img,Y,N,AUTO,Y
+mcf2_a,YAFFS2,8192,NAND_USER,N,Y,MCF_OTA_2.img,Y,N,AUTO,Y
+mcf1_b,YAFFS2,8192,NAND_USER,N,Y,MCF_OTA_1.img,Y,N,AUTO,Y
+mcf2_b,YAFFS2,8192,NAND_USER,N,Y,MCF_OTA_2.img,Y,N,AUTO,Y
+seccfg,Raw data,1024,NAND_USER,N,N,NONE,N,N,AUTO,Y
+boot_para,Raw data,2048,NAND_USER,N,N,NONE,N,N,AUTO,Y
+nvram,Raw data,32768,NAND_USER,N,N,NONE,N,N,PROTECTED,Y
+md1img_a,Raw data,81920,NAND_USER,N,Y,modem.img,Y,N,AUTO,Y
+md1dsp_a,Raw data,10240,NAND_USER,N,Y,dsp.bin,Y,N,AUTO,Y
+spmfw_a,Raw data,1024,NAND_USER,N,Y,spmfw.img,Y,N,AUTO,Y
+pi_img_a,Raw data,1024,NAND_USER,N,Y,pi_img.img,Y,N,AUTO,Y
+dpm_a,Raw data,1024,NAND_USER,N,Y,dpm.img,Y,N,AUTO,Y
+medmcu_a,Raw data,1024,NAND_USER,N,Y,medmcu.img,Y,N,AUTO,Y
+sspm_a,Raw data,1024,NAND_USER,N,Y,sspm.img,Y,N,AUTO,Y
+mcupm_a,Raw data,1024,NAND_USER,N,Y,mcupm.img,Y,N,AUTO,Y
+lk_a,Raw data,1024,NAND_USER,N,Y,lk.img,Y,Y,AUTO,Y
+tee_a,Raw data,1024,NAND_USER,N,Y,tee.img,Y,Y,AUTO,Y
+boot_a,Raw data,32768,NAND_USER,N,Y,boot.img,Y,N,AUTO,Y
+rootfs_sig_a,Raw data,512,NAND_USER,N,Y,root_ro.sig,Y,N,AUTO,Y
+rootfs_a,Raw data,65536,NAND_USER,N,Y,ubi-rootfs.squashfs,Y,N,AUTO,Y
+md1img_b,Raw data,81920,NAND_USER,N,Y,modem.img,Y,N,AUTO,Y
+md1dsp_b,Raw data,10240,NAND_USER,N,Y,dsp.bin,Y,N,AUTO,Y
+spmfw_b,Raw data,1024,NAND_USER,N,Y,spmfw.img,Y,N,AUTO,Y
+pi_img_b,Raw data,1024,NAND_USER,N,Y,pi_img.img,Y,N,AUTO,Y
+dpm_b,Raw data,1024,NAND_USER,N,Y,dpm.img,Y,N,AUTO,Y
+medmcu_b,Raw data,1024,NAND_USER,N,Y,medmcu.img,Y,N,AUTO,Y
+sspm_b,Raw data,1024,NAND_USER,N,Y,sspm.img,Y,N,AUTO,Y
+mcupm_b,Raw data,1024,NAND_USER,N,Y,mcupm.img,Y,N,AUTO,Y
+lk_b,Raw data,1024,NAND_USER,N,Y,lk.img,Y,Y,AUTO,Y
+tee_b,Raw data,1024,NAND_USER,N,Y,tee.img,Y,Y,AUTO,Y
+boot_b,Raw data,32768,NAND_USER,N,Y,boot.img,Y,N,AUTO,Y
+rootfs_sig_b,Raw data,512,NAND_USER,N,Y,root_ro.sig,Y,N,AUTO,Y
+rootfs_b,Raw data,65536,NAND_USER,N,Y,ubi-rootfs.squashfs,Y,N,AUTO,Y
+loader_ext_a,Raw data,256,NAND_USER,N,Y,loader_ext.img,Y,Y,AUTO,Y
+loader_ext_b,Raw data,256,NAND_USER,N,Y,loader_ext.img,Y,N,AUTO,Y
+logo,Raw data,8192,NAND_USER,N,Y,logo.bin,N,N,AUTO,N
+user_data,Raw,32768,NAND_USER,N,N,NONE,N,N,NEEDRESIZE,Y
+pmt,Raw data,512,NAND_USER,Y,N,NONE,N,N,RESERVED,Y

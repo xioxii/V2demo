@@ -1,0 +1,689 @@
+# 1 "arch/arm64/boot/dts/mediatek/mt8168-evb.dts"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "arch/arm64/boot/dts/mediatek/mt8168-evb.dts"
+
+
+
+
+
+/dts-v1/;
+# 1 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 1
+
+
+
+
+
+
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/clock/mt8168-clk.h" 1
+# 8 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 2
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/iio/mt635x-auxadc.h" 1
+# 9 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 2
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/interrupt-controller/irq.h" 1
+# 10 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 2
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/interrupt-controller/arm-gic.h" 1
+# 11 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 2
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/phy/phy.h" 1
+# 12 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 2
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt8168-pinfunc.h" 1
+
+
+
+
+
+
+
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt65xx.h" 1
+# 9 "./scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt8168-pinfunc.h" 2
+# 13 "arch/arm64/boot/dts/mediatek/mt8168.dtsi" 2
+
+/ {
+ model = "MT8168";
+ compatible = "mediatek,mt8168";
+ interrupt-parent = <&sysirq>;
+ #address-cells = <2>;
+ #size-cells = <2>;
+
+
+ chosen: chosen {
+  bootargs = "console=tty0 console=ttyS0,921600n1 earlycon=uart8250,mmio32,0x11002000 vmalloc=496M androidboot.hardware=mt8168 firmware_class.path=/vendor/firmware loop.max_part=7";
+ };
+
+ clocks {
+  #address-cells = <2>;
+  #size-cells = <2>;
+  compatible = "simple-bus";
+  ranges;
+
+  clk26m: clk26m {
+   compatible = "fixed-clock";
+   #clock-cells = <0>;
+   clock-frequency = <26000000>;
+  };
+
+  clk32k: clk32k {
+   compatible = "fixed-clock";
+   #clock-cells = <0>;
+   clock-frequency = <32000>;
+  };
+
+  uart_clk: dummy26m {
+   compatible = "fixed-clock";
+   clock-frequency = <26000000>;
+   #clock-cells = <0>;
+  };
+ };
+
+ cluster0_opp: opp_table0 {
+  compatible = "operating-points-v2";
+  opp-shared;
+  opp-850000000 {
+   opp-hz = /bits/ 64 <850000000>;
+   opp-microvolt = <650000>;
+  };
+  opp-918000000 {
+   opp-hz = /bits/ 64 <918000000>;
+   opp-microvolt = <668750>;
+  };
+  opp-987000000 {
+   opp-hz = /bits/ 64 <987000000>;
+   opp-microvolt = <687500>;
+  };
+  opp-1056000000 {
+   opp-hz = /bits/ 64 <1056000000>;
+   opp-microvolt = <706250>;
+  };
+  opp-1125000000 {
+   opp-hz = /bits/ 64 <1125000000>;
+   opp-microvolt = <725000>;
+  };
+  opp-1216000000 {
+   opp-hz = /bits/ 64 <1216000000>;
+   opp-microvolt = <750000>;
+  };
+  opp-1308000000 {
+   opp-hz = /bits/ 64 <1308000000>;
+   opp-microvolt = <775000>;
+  };
+  opp-1400000000 {
+   opp-hz = /bits/ 64 <1400000000>;
+   opp-microvolt = <800000>;
+  };
+  opp-1466000000 {
+   opp-hz = /bits/ 64 <1466000000>;
+   opp-microvolt = <825000>;
+  };
+  opp-1533000000 {
+   opp-hz = /bits/ 64 <1533000000>;
+   opp-microvolt = <850000>;
+  };
+  opp-1633000000 {
+   opp-hz = /bits/ 64 <1633000000>;
+   opp-microvolt = <887500>;
+  };
+  opp-1700000000 {
+   opp-hz = /bits/ 64 <1700000000>;
+   opp-microvolt = <912500>;
+  };
+  opp-1767000000 {
+   opp-hz = /bits/ 64 <1767000000>;
+   opp-microvolt = <937500>;
+  };
+  opp-1834000000 {
+   opp-hz = /bits/ 64 <1834000000>;
+   opp-microvolt = <962500>;
+  };
+  opp-1917000000 {
+   opp-hz = /bits/ 64 <1917000000>;
+   opp-microvolt = <993750>;
+  };
+  opp-2001000000 {
+   opp-hz = /bits/ 64 <2001000000>;
+   opp-microvolt = <1025000>;
+  };
+ };
+
+ cpus: cpus {
+  #address-cells = <1>;
+  #size-cells = <0>;
+
+  cpu-map {
+   cluster0: cluster0 {
+    core0 {
+     cpu = <&cpu0>;
+    };
+    core1 {
+     cpu = <&cpu1>;
+    };
+    core2 {
+     cpu = <&cpu2>;
+    };
+    core3 {
+     cpu = <&cpu3>;
+    };
+   };
+  };
+
+  cpu0: cpu@0 {
+   device_type = "cpu";
+   compatible = "arm,cortex-a53";
+   reg = <0x0>;
+   clock-frequency = <1600000000>;
+   enable-method = "psci";
+   cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
+   clocks = <&mcusys 0>,
+     <&apmixedsys 1>,
+     <&apmixedsys 0>;
+   clock-names = "cpu", "intermediate", "armpll";
+   operating-points-v2 = <&cluster0_opp>;
+  };
+
+  cpu1: cpu@1 {
+   device_type = "cpu";
+   compatible = "arm,cortex-a53";
+   reg = <0x1>;
+   clock-frequency = <1600000000>;
+   enable-method = "psci";
+   cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
+   clocks = <&mcusys 0>,
+     <&apmixedsys 1>,
+     <&apmixedsys 0>;
+   clock-names = "cpu", "intermediate", "armpll";
+   operating-points-v2 = <&cluster0_opp>;
+  };
+
+  cpu2: cpu@2 {
+   device_type = "cpu";
+   compatible = "arm,cortex-a53";
+   reg = <0x2>;
+   clock-frequency = <1600000000>;
+   enable-method = "psci";
+   cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
+   clocks = <&mcusys 0>,
+     <&apmixedsys 1>,
+     <&apmixedsys 0>;
+   clock-names = "cpu", "intermediate", "armpll";
+   operating-points-v2 = <&cluster0_opp>;
+  };
+
+  cpu3: cpu@3 {
+   device_type = "cpu";
+   compatible = "arm,cortex-a53";
+   reg = <0x3>;
+   clock-frequency = <1600000000>;
+   enable-method = "psci";
+   cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
+   clocks = <&mcusys 0>,
+     <&apmixedsys 1>,
+     <&apmixedsys 0>;
+   clock-names = "cpu", "intermediate", "armpll";
+   operating-points-v2 = <&cluster0_opp>;
+  };
+
+  idle-states {
+   entry-method = "psci";
+
+   MCDI_CPU: mcdi-cpu {
+    compatible = "arm,idle-state";
+    local-timer-stop;
+    arm,psci-suspend-param = <0x00010001>;
+    entry-latency-us = <300>;
+    exit-latency-us = <200>;
+    min-residency-us = <1000>;
+   };
+
+   MCDI_CLUSTER: mcdi-cluster {
+    compatible = "arm,idle-state";
+    local-timer-stop;
+    arm,psci-suspend-param = <0x01010001>;
+    entry-latency-us = <350>;
+    exit-latency-us = <250>;
+    min-residency-us = <1200>;
+   };
+
+   DPIDLE: dpidle {
+    compatible = "arm,idle-state";
+    local-timer-stop;
+    arm,psci-suspend-param = <0x01010004>;
+    entry-latency-us = <300>;
+    exit-latency-us = <800>;
+    min-residency-us = <3300>;
+   };
+  };
+ };
+
+ firmware {
+  android {
+   compatible = "android,firmware";
+   boot_devices = "soc/11270000.ufshci,soc/11230000.mmc";
+   fstab: fstab {
+    compatible = "android,fstab";
+    system {
+     compatible = "android,system";
+     dev = "/dev/block/by-name/system";
+     type = "ext4";
+     mnt_flags = "ro";
+     fsmgr_flags = "wait";
+    };
+    vendor {
+     compatible = "android,vendor";
+     dev = "/dev/block/by-name/vendor";
+     type = "ext4";
+     mnt_flags = "ro";
+     fsmgr_flags = "wait";
+    };
+   };
+  };
+ };
+
+ memory {
+  device_type = "memory";
+  reg = <0 0x40000000 0 0x20000000>;
+ };
+
+ pmu {
+  compatible = "arm,cortex-a53-pmu",
+        "arm,cortex-a7-pmu";
+  interrupt-parent = <&gic>;
+  interrupts = <1 7 8>;
+ };
+
+ psci {
+  compatible = "arm,psci-1.0";
+  method = "smc";
+ };
+
+ reserved_memory: reserved-memory {
+  #address-cells = <2>;
+  #size-cells = <2>;
+  ranges;
+
+  ram_console-reserved-memory {
+   compatible = "mediatek,ram_console";
+   reg = <0 0x54400000 0 0x10000>;
+  };
+
+  pstore-reserved-memory {
+   compatible = "mediatek,pstore";
+   reg = <0 0x54410000 0 0xe0000>;
+  };
+
+  minirdump-reserved-memory {
+   compatible = "mediatek,minirdump";
+   reg = <0 0x544f0000 0 0x10000>;
+  };
+
+  atf_reserved_memory: atf-reserved-memory {
+   compatible = "mediatek,mt8168-atf-reserved-memory";
+   no-map;
+   reg = <0 0x54600000 0 0x30000>;
+  };
+ };
+
+ timer: timer {
+  compatible = "arm,armv8-timer";
+  interrupt-parent = <&gic>;
+  interrupts = <1 13
+        ((((1 << (4)) - 1) << 8) | 8)>,
+        <1 14
+        ((((1 << (4)) - 1) << 8) | 8)>,
+        <1 11
+        ((((1 << (4)) - 1) << 8) | 8)>,
+        <1 10
+        ((((1 << (4)) - 1) << 8) | 8)>;
+  clock-frequency = <13000000>;
+ };
+
+ soc {
+  #address-cells = <2>;
+  #size-cells = <2>;
+  compatible = "simple-bus";
+  ranges;
+
+  chipid: chipid@08000000 {
+   compatible = "mediatek,chipid";
+   reg = <0 0x08000000 0 0x0004>,
+         <0 0x08000004 0 0x0004>,
+         <0 0x08000008 0 0x0004>,
+         <0 0x0800000c 0 0x0004>;
+  };
+
+  gic: interrupt-controller@c000000 {
+   compatible = "arm,gic-v3";
+   interrupt-controller;
+   #interrupt-cells = <3>;
+   #address-cells = <2>;
+   #size-cells = <2>;
+   #redistributor-regions = <1>;
+   interrupt-parent = <&gic>;
+   reg = <0 0xc000000 0 0x80000>,
+         <0 0xc080000 0 0x80000>;
+   interrupts = <1 9
+    ((((1 << (4)) - 1) << 8) | 4)>;
+  };
+
+  topckgen: topckgen@10000000 {
+   compatible = "mediatek,mt8168-topckgen", "syscon";
+   reg = <0 0x10000000 0 0x1000>;
+   #clock-cells = <1>;
+  };
+
+  infracfg: infracfg@10001000 {
+   compatible = "mediatek,mt8168-infracfg", "syscon";
+   reg = <0 0x10001000 0 0x1000>;
+   #clock-cells = <1>;
+  };
+
+  pio: pinctrl@10005000 {
+   compatible = "mediatek,mt8168-pinctrl";
+   reg = <0 0x10005000 0 0x1000>,
+         <0 0x1000b000 0 0x1000>;
+   reg-names = "iocfg0", "eint";
+   gpio-controller;
+   #gpio-cells = <2>;
+   gpio-ranges = <&pio 0 0 144>;
+   interrupt-controller;
+   #interrupt-cells = <2>;
+   interrupts = <0 115 4>;
+  };
+
+  toprgu: toprgu@10007000 {
+   compatible = "mediatek,mt8168-rgu",
+         "mediatek,mt6589-wdt";
+   reg = <0 0x10007000 0 0x1000>;
+   interrupts = <0 83 2>;
+   #reset-cells = <1>;
+  };
+
+  apmixedsys: syscon@1000c000 {
+   compatible = "mediatek,mt8168-apmixedsys", "syscon";
+   reg = <0 0x1000c000 0 0x1000>;
+   #clock-cells = <1>;
+  };
+
+  mcusys: mcusys@10200000 {
+   compatible = "mediatek,mt8168-mcusys",
+         "mediatek,mt8168-mcucfg", "syscon";
+   reg = <0 0x10200000 0 0x2000>;
+   interrupts = <0 0 4>;
+   #clock-cells = <1>;
+  };
+
+  sysirq: intpol-controller@10200a80 {
+   compatible = "mediatek,mt8168-sysirq",
+         "mediatek,mt6577-sysirq";
+   interrupt-controller;
+   #interrupt-cells = <3>;
+   interrupt-parent = <&gic>;
+   reg = <0 0x10200a80 0 0x20>;
+  };
+
+  sys_cirq: sys_cirq@10202000 {
+   compatible = "mediatek,mt8168-sys_cirq",
+         "mediatek,mt6735-sys_cirq",
+         "mediatek,sys_cirq";
+   reg = <0 0x10202000 0 0x1000>;
+   interrupts = <0 218 8>;
+   mediatek,cirq_num = <147>;
+   mediatek,spi_start_offset = <72>;
+  };
+
+  uart0: uart0@11002000 {
+   compatible = "mediatek,mt8168-uart",
+         "mediatek,mt6577-uart";
+   reg = <0 0x11002000 0 0x1000>;
+   interrupts = <0 35 8>;
+   clocks = <&clk26m>, <&infracfg 14>;
+   clock-names = "baud", "bus";
+   status = "disabled";
+  };
+
+  uart1: uart1@11003000 {
+   compatible = "mediatek,mt8168-uart",
+         "mediatek,mt6577-uart";
+   reg = <0 0x11003000 0 0x1000>;
+   interrupts = <0 36 8>;
+   clocks = <&clk26m>, <&infracfg 15>;
+   clock-names = "baud", "bus";
+   status = "disabled";
+  };
+
+  mmc0: mmc@11230000 {
+   compatible = "mediatek,mt8168-mmc";
+   reg = <0 0x11230000 0 0x1000>,
+         <0 0x11cd0000 0 0x1000>;
+   interrupts = <0 23 8>;
+   clocks = <&topckgen 74>,
+     <&infracfg 22>,
+     <&infracfg 43>;
+   clock-names = "source", "hclk", "source_cg";
+   status = "disabled";
+  };
+
+  mmc1: mmc@11240000 {
+   compatible = "mediatek,mt8168-mmc";
+   reg = <0 0x11240000 0 0x1000>,
+         <0 0x11c90000 0 0x1000>;
+   interrupts = <0 24 8>;
+   clocks = <&topckgen 76>,
+     <&infracfg 24>,
+     <&infracfg 44>;
+   clock-names = "source", "hclk", "source_cg";
+   status = "disabled";
+  };
+
+  ice: ice_debug {
+   compatible = "mediatek,mt8168-ice_debug",
+         "mediatek,mt2701-ice_debug";
+   clocks = <&infracfg 32>;
+   clock-names = "ice_dbg";
+  };
+ };
+};
+# 8 "arch/arm64/boot/dts/mediatek/mt8168-evb.dts" 2
+
+
+
+
+# 1 "./scripts/dtc/include-prefixes/dt-bindings/gpio/gpio.h" 1
+# 13 "arch/arm64/boot/dts/mediatek/mt8168-evb.dts" 2
+
+
+/ {
+ model = "MediaTek MT8168 EVB";
+ compatible = "mediatek,mt8168-evb", "mediatek,mt8168";
+
+ mmc_fixed_3v3: fixedregulator@0 {
+  compatible = "regulator-fixed";
+  regulator-name = "mmc_power";
+  regulator-min-microvolt = <3300000>;
+  regulator-max-microvolt = <3300000>;
+  enable-active-high;
+  regulator-always-on;
+ };
+
+ mmc_fixed_1v8_io: fixedregulator@1 {
+  compatible = "regulator-fixed";
+  regulator-name = "mmc_io";
+  regulator-min-microvolt = <1800000>;
+  regulator-max-microvolt = <1800000>;
+  enable-active-high;
+  regulator-always-on;
+ };
+};
+
+&cpu0 {
+ clock-frequency = <10000000>;
+};
+
+&cpu1 {
+ clock-frequency = <10000000>;
+};
+
+&cpu2 {
+ clock-frequency = <10000000>;
+};
+
+&cpu3 {
+ clock-frequency = <10000000>;
+};
+
+&fstab {
+ vendor {
+  compatible = "android,vendor";
+  dev = "/dev/block/platform/soc/11230000.mmc/by-name/vendor";
+  type = "ext4";
+  mnt_flags = "ro";
+  fsmgr_flags = "wait,avb";
+ };
+};
+
+&mmc0 {
+ status = "okay";
+ pinctrl-names = "default", "state_uhs";
+ pinctrl-0 = <&mmc0_pins_default>;
+ pinctrl-1 = <&mmc0_pins_uhs>;
+ bus-width = <8>;
+ max-frequency = <200000000>;
+ cap-mmc-highspeed;
+ mmc-hs200-1_8v;
+ mmc-hs400-1_8v;
+ cap-cqe;
+ cap-cqe_dcmd;
+ hs400-ds-delay = <0x12012>;
+ vmmc-supply = <&mmc_fixed_3v3>;
+ vqmmc-supply = <&mmc_fixed_1v8_io>;
+ assigned-clocks = <&topckgen 74>;
+ assigned-clock-parents = <&topckgen 54>;
+ non-removable;
+ no-sd;
+ no-sdio;
+};
+
+&mmc1 {
+ status = "okay";
+ pinctrl-names = "default", "state_uhs";
+ pinctrl-0 = <&mmc1_pins_default>;
+ pinctrl-1 = <&mmc1_pins_uhs>;
+ bus-width = <4>;
+ max-frequency = <200000000>;
+ cap-sd-highspeed;
+ sd-uhs-sdr50;
+ sd-uhs-sdr104;
+ cd-gpios = <&pio 7 0>;
+ vmmc-supply = <&mmc_fixed_3v3>;
+ vqmmc-supply = <&mmc_fixed_1v8_io>;
+ no-mmc;
+ no-sdio;
+};
+
+&pio {
+ pinctrl-names = "default";
+
+ mmc0_pins_default: mmc0default {
+  pins_clk {
+   pinmux = <(((99) << 8) | 1)>;
+   bias-pull-down;
+  };
+
+  pins_cmd_dat {
+   pinmux = <(((103) << 8) | 1)>,
+     <(((102) << 8) | 1)>,
+     <(((101) << 8) | 1)>,
+     <(((100) << 8) | 1)>,
+     <(((96) << 8) | 1)>,
+     <(((95) << 8) | 1)>,
+     <(((94) << 8) | 1)>,
+     <(((93) << 8) | 1)>,
+     <(((98) << 8) | 1)>;
+   input-enable;
+   bias-pull-up;
+  };
+
+  pins_rst {
+   pinmux = <(((97) << 8) | 1)>;
+   bias-pull-up;
+  };
+ };
+
+ mmc0_pins_uhs: mmc0 {
+  pins_clk {
+   pinmux = <(((99) << 8) | 1)>;
+   drive-strength = <6>;
+   bias-pull-down = <101>;
+  };
+
+  pins_cmd_dat {
+   pinmux = <(((103) << 8) | 1)>,
+     <(((102) << 8) | 1)>,
+     <(((101) << 8) | 1)>,
+     <(((100) << 8) | 1)>,
+     <(((96) << 8) | 1)>,
+     <(((95) << 8) | 1)>,
+     <(((94) << 8) | 1)>,
+     <(((93) << 8) | 1)>,
+     <(((98) << 8) | 1)>;
+   input-enable;
+   drive-strength = <6>;
+   bias-pull-up = <101>;
+  };
+
+  pins_ds {
+   pinmux = <(((104) << 8) | 1)>;
+   drive-strength = <6>;
+   bias-pull-down = <102>;
+  };
+
+  pins_rst {
+   pinmux = <(((97) << 8) | 1)>;
+   bias-pull-up;
+  };
+ };
+
+ mmc1_pins_default: mmc1default {
+  pins_clk {
+   pinmux = <(((88) << 8) | 1)>;
+   drive-strength = <4>;
+   bias-pull-down = <102>;
+  };
+
+  pins_cmd_dat {
+   pinmux = <(((89) << 8) | 1)>,
+     <(((90) << 8) | 1)>,
+     <(((91) << 8) | 1)>,
+     <(((92) << 8) | 1)>,
+     <(((87) << 8) | 1)>;
+   input-enable;
+   drive-strength = <4>;
+   bias-pull-up = <101>;
+  };
+
+  pins_insert {
+   pinmux = <(((7) << 8) | 0)>;
+   bias-pull-up;
+  };
+ };
+
+ mmc1_pins_uhs: mmc1 {
+  pins_clk {
+   pinmux = <(((88) << 8) | 1)>;
+   drive-strength = <6>;
+   bias-pull-down = <102>;
+  };
+
+  pins_cmd_dat {
+   pinmux = <(((89) << 8) | 1)>,
+     <(((90) << 8) | 1)>,
+     <(((91) << 8) | 1)>,
+     <(((92) << 8) | 1)>,
+     <(((87) << 8) | 1)>;
+   input-enable;
+   drive-strength = <6>;
+   bias-pull-up = <101>;
+  };
+ };
+};
+
+&uart0 {
+ status="okay";
+};

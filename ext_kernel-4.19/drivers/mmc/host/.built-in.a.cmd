@@ -1,0 +1,1 @@
+cmd_drivers/mmc/host/built-in.a :=  rm -f drivers/mmc/host/built-in.a; aarch64-openwrt-linux-musl-ar rcSTPD drivers/mmc/host/built-in.a drivers/mmc/host/mtk-sd.o drivers/mmc/host/cqhci.o drivers/mmc/host/mediatek/built-in.a

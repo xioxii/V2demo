@@ -1,0 +1,10 @@
+mt8168-evb.o: arch/arm64/boot/dts/mediatek/mt8168-evb.dts \
+ arch/arm64/boot/dts/mediatek/mt8168.dtsi \
+ scripts/dtc/include-prefixes/dt-bindings/clock/mt8168-clk.h \
+ scripts/dtc/include-prefixes/dt-bindings/iio/mt635x-auxadc.h \
+ scripts/dtc/include-prefixes/dt-bindings/interrupt-controller/irq.h \
+ scripts/dtc/include-prefixes/dt-bindings/interrupt-controller/arm-gic.h \
+ scripts/dtc/include-prefixes/dt-bindings/phy/phy.h \
+ scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt8168-pinfunc.h \
+ scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt65xx.h \
+ scripts/dtc/include-prefixes/dt-bindings/gpio/gpio.h

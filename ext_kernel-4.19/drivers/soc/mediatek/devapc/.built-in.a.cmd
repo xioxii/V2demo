@@ -1,0 +1,1 @@
+cmd_drivers/soc/mediatek/devapc/built-in.a :=  rm -f drivers/soc/mediatek/devapc/built-in.a; aarch64-openwrt-linux-musl-ar rcSTPD drivers/soc/mediatek/devapc/built-in.a drivers/soc/mediatek/devapc/devapc-mtk-multi-ao.o drivers/soc/mediatek/devapc/devapc-mt6880.o

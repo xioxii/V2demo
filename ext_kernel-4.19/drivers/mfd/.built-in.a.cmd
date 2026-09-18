@@ -1,0 +1,1 @@
+cmd_drivers/mfd/built-in.a :=  rm -f drivers/mfd/built-in.a; aarch64-openwrt-linux-musl-ar rcSTPD drivers/mfd/built-in.a drivers/mfd/cros_ec.o drivers/mfd/cros_ec_dev.o drivers/mfd/mfd-core.o drivers/mfd/max77620.o drivers/mfd/mtk-spmi-pmic.o drivers/mfd/syscon.o drivers/mfd/vexpress-sysreg.o drivers/mfd/mt6330-core.o drivers/mfd/mt6330-irq.o drivers/mfd/mt63xx-ot-debug.o

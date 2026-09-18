@@ -1,0 +1,9 @@
+Partition_Name,Type,Size_KB,Region,Reserved,Download,Download_File,OTA_Update,EmptyBoot_Needed,Operation_Type,Default_Exist
+preloader,Raw data,256,EMMC_BOOT1_BOOT2,N,Y,AUTO,N,N,AUTO,Y
+pgpt,Raw data,32,EMMC_USER,N,N,NONE,N,N,AUTO,Y
+AP_ROM,Raw data,51200,EMMC_USER,N,Y,AUTO,N,N,AUTO,Y
+CONN_SYS,Raw data,10240,EMMC_USER,N,Y,AUTO,N,N,AUTO,Y
+seccfg,Raw data,256,EMMC_USER,N,N,NONE,N,N,AUTO,Y
+lk,Raw data,384,EMMC_USER,N,N,NONE,N,N,AUTO,Y
+expdb,Raw data,10240,EMMC_USER,N,N,NONE,N,N,AUTO,Y
+sgpt,Raw data,32,EMMC_USER,Y,N,NONE,N,N,RESERVED,Y

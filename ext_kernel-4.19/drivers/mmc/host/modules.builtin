@@ -1,0 +1,3 @@
+kernel/drivers/mmc/host/mtk-sd.ko
+kernel/drivers/mmc/host/cqhci.ko
+kernel/drivers/mmc/host/mediatek/msdc.ko

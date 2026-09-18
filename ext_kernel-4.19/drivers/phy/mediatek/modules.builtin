@@ -1,0 +1,3 @@
+kernel/drivers/phy/mediatek/phy-mtk-tphy.ko
+kernel/drivers/phy/mediatek/phy-mtk-ufs.ko
+kernel/drivers/phy/mediatek/phy-mtk-pcie.ko

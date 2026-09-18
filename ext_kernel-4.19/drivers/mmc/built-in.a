@@ -1,0 +1,54 @@
+!<thin>
+//                                              436       `
+core/core.o/
+core/bus.o/
+core/host.o/
+core/mmc.o/
+core/mmc_ops.o/
+core/sd.o/
+core/sd_ops.o/
+core/sdio.o/
+core/sdio_ops.o/
+core/sdio_bus.o/
+core/sdio_cis.o/
+core/sdio_io.o/
+core/sdio_irq.o/
+core/slot-gpio.o/
+core/pwrseq.o/
+core/debugfs.o/
+core/pwrseq_simple.o/
+core/pwrseq_emmc.o/
+core/block.o/
+core/queue.o/
+host/mtk-sd.o/
+host/cqhci.o/
+host/mediatek/autok.o/
+host/mediatek/autok_dvfs.o/
+host/mediatek/msdc_tune.o/
+host/mediatek/dbg.o/
+/0              0           0     0     644     581400    `
+/13             0           0     0     644     137176    `
+/25             0           0     0     644     238248    `
+/38             0           0     0     644     213424    `
+/50             0           0     0     644     222784    `
+/66             0           0     0     644     181488    `
+/77             0           0     0     644     182544    `
+/92             0           0     0     644     151600    `
+/105            0           0     0     644     171584    `
+/122            0           0     0     644     140880    `
+/139            0           0     0     644     125072    `
+/156            0           0     0     644     163600    `
+/172            0           0     0     644     128168    `
+/189            0           0     0     644     216440    `
+/207            0           0     0     644     130232    `
+/222            0           0     0     644     174784    `
+/238           /0           0     0     644     136128    `
+/260            0           0     0     644     130264    `
+/280            0           0     0     644     500272    `
+/294            0           0     0     644     276904    `
+/308            0           0     0     644     426816    `
+/323            0           0     0     644     310712    `
+/337            0           0     0     644     566080    `
+/360            0           0     0     644     218040    `
+/388            0           0     0     644     228000    `
+/415            0           0     0     644     235472    `

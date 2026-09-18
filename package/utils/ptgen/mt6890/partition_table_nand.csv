@@ -1,0 +1,37 @@
+Partition_Name,Type,Size_KB,Region,Reserved,Download,Download_File,OTA_Update,EmptyBoot_Needed,Operation_Type,Default_Exist
+preloader,Raw data,2048,NAND_USER,N,Y,AUTO,Y,N,AUTO,Y
+proinfo,Raw data,1024,NAND_USER,N,N,NONE,N,N,PROTECTED,Y
+misc,Raw data,1024,NAND_USER,N,N,NONE,N,N,AUTO,Y
+para,Raw data,1024,NAND_USER,N,N,NONE,N,N,AUTO,Y
+expdb,Raw data,20480,NAND_USER,N,N,NONE,N,N,AUTO,Y
+mcf1,YAFFS2,8192,NAND_USER,N,Y,MCF_OTA_1.img,Y,N,AUTO,Y
+mcf2,YAFFS2,8192,NAND_USER,N,Y,MCF_OTA_2.img,Y,N,AUTO,Y
+seccfg,Raw data,1024,NAND_USER,N,N,NONE,N,N,AUTO,Y
+boot_para,Raw data,4096,NAND_USER,N,N,NONE,N,N,AUTO,Y
+nvram,Raw data,32768,NAND_USER,N,N,NONE,N,N,PROTECTED,Y
+md1img,Raw data,65536,NAND_USER,N,Y,modem.img,Y,N,AUTO,Y
+md1dsp,Raw data,10240,NAND_USER,N,Y,dsp.bin,Y,N,AUTO,Y
+spmfw,Raw data,1024,NAND_USER,N,Y,spmfw.img,Y,N,AUTO,Y
+pi_img,Raw data,1024,NAND_USER,N,Y,pi_img.img,Y,N,AUTO,Y
+dpm,Raw data,1024,NAND_USER,N,Y,dpm.img,Y,N,AUTO,Y
+medmcu,Raw data,1024,NAND_USER,N,Y,medmcu.img,Y,N,AUTO,Y
+sspm_1,Raw data,1024,NAND_USER,N,Y,sspm.img,Y,N,AUTO,Y
+sspm_2,Raw data,1024,NAND_USER,N,Y,sspm.img,Y,N,AUTO,Y
+mcupm_1,Raw data,1024,NAND_USER,N,Y,mcupm.img,Y,N,AUTO,Y
+mcupm_2,Raw data,1024,NAND_USER,N,Y,mcupm.img,Y,N,AUTO,Y
+lk,Raw data,1024,NAND_USER,N,Y,lk.img,Y,Y,AUTO,Y
+lk2,Raw data,1024,NAND_USER,N,Y,lk.img,Y,N,AUTO,Y
+tee1,Raw data,1024,NAND_USER,N,Y,tee.img,Y,Y,AUTO,Y
+tee2,Raw data,1024,NAND_USER,N,Y,tee.img,Y,N,AUTO,Y
+boot,Raw data,16384,NAND_USER,N,Y,boot.img,Y,N,AUTO,Y
+rootfs_sig,Raw data,512,NAND_USER,N,Y,root_ro.sig,Y,N,AUTO,Y
+rootfs,Raw data,65536,NAND_USER,N,Y,ubi-rootfs.squashfs,Y,N,AUTO,Y
+loader_ext1,Raw data,1024,NAND_USER,N,Y,loader_ext.img,Y,Y,AUTO,Y
+loader_ext2,Raw data,1024,NAND_USER,N,Y,loader_ext.img,Y,N,AUTO,Y
+fibo_para,Raw data,4096,NAND_USER,N,N,NONE,N,N,PROTECTED,Y
+fibonv,YAFFS2,32768,NAND_USER,N,N,NONE,N,N,PROTECTED,Y
+recovery,Raw data,16384,NAND_USER,N,Y,recovery.img,Y,N,AUTO,Y
+recoveryfs,Raw data,65536,NAND_USER,N,Y,recovery.squashfs,Y,N,AUTO,Y
+user_data,Raw,32768,NAND_USER,N,N,NONE,N,N,NEEDRESIZE,Y
+fibo_pmt,Raw data,512,NAND_USER,Y,N,NONE,N,N,RESERVED,Y
+pmt,Raw data,512,NAND_USER,Y,N,NONE,N,N,RESERVED,Y

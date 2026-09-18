@@ -1,0 +1,7 @@
+kernel/drivers/mfd/cros_ec_core.ko
+kernel/drivers/mfd/cros_ec_dev.ko
+kernel/drivers/mfd/mfd-core.ko
+kernel/drivers/mfd/mtk-spmi-pmic.ko
+kernel/drivers/mfd/mt6330-core.ko
+kernel/drivers/mfd/mt6330-irq.ko
+kernel/drivers/mfd/mt63xx-ot-debug.ko

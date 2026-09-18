@@ -1,0 +1,8 @@
+kernel/drivers/regulator/fixed.ko
+kernel/drivers/regulator/gpio-regulator.ko
+kernel/drivers/regulator/mt6315-regulator.ko
+kernel/drivers/regulator/mt6315-misc.ko
+kernel/drivers/regulator/mt6330-regulator.ko
+kernel/drivers/regulator/mtk-dvfsrc-regulator.ko
+kernel/drivers/regulator/pwm-regulator.ko
+kernel/drivers/regulator/vctrl-regulator.ko

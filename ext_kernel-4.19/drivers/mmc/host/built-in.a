@@ -1,0 +1,14 @@
+!<thin>
+//                                              98        `
+mtk-sd.o/
+cqhci.o/
+mediatek/autok.o/
+mediatek/autok_dvfs.o/
+mediatek/msdc_tune.o/
+mediatek/dbg.o/
+/0              0           0     0     644     426816    `
+/10             0           0     0     644     310712    `
+/19             0           0     0     644     566080    `
+/37             0           0     0     644     218040    `
+/60             0           0     0     644     228000    `
+/82             0           0     0     644     235472    `

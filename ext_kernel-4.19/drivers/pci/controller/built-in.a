@@ -1,0 +1,13 @@
+!<thin>
+//                                              92        `
+pcie-mediatek-gen3.o/
+dwc/pcie-hisi.o/
+pci-thunder-ecam.o/
+pci-thunder-pem.o/
+pci-xgene.o/
+
+/0              0           0     0     644     339488    `
+/22             0           0     0     644     165480    `
+/39             0           0     0     644     163360    `
+/59             0           0     0     644     165048    `
+/78             0           0     0     644     177696    `

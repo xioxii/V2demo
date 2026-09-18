@@ -1,0 +1,28 @@
+!<thin>
+//                                              236       `
+mtk-cmdq-helper.o/
+mtk-infracfg.o/
+mtk-scpsys-ext.o/
+mtk-dvfsrc.o/
+mtk-dvfsrc-start.o/
+mtk-pmic-wrap.o/
+mtk-scpsys.o/
+mtk-scpsys-bringup.o/
+devapc/devapc-mtk-multi-ao.o/
+devapc/devapc-mt6880.o/
+mtk-mbox.o/
+mtk_tinysys_ipi.o/
+mtk-lpm.o/
+/0              0           0     0     644     433424    `
+/19             0           0     0     644     22064     `
+/35             0           0     0     644     97064     `
+/53             0           0     0     644     208056    `
+/67             0           0     0     644     106688    `
+/87            /0           0     0     644     197704    `
+/104            0           0     0     644     277168    `
+/118            0           0     0     644     107664    `
+/140            0           0     0     644     274624    `
+/170           /0           0     0     644     183024    `
+/194            0           0     0     644     163992    `
+/206            0           0     0     644     204472    `
+/225            0           0     0     644     103960    `

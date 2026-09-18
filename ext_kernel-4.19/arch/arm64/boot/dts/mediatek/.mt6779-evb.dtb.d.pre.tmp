@@ -1,0 +1,21 @@
+mt6779-evb.o: arch/arm64/boot/dts/mediatek/mt6779-evb.dts \
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi \
+ scripts/dtc/include-prefixes/dt-bindings/clock/mt6779-clk.h \
+ scripts/dtc/include-prefixes/dt-bindings/power/mt6779-power.h \
+ scripts/dtc/include-prefixes/dt-bindings/interconnect/mtk,mmqos.h \
+ scripts/dtc/include-prefixes/dt-bindings/interrupt-controller/irq.h \
+ scripts/dtc/include-prefixes/dt-bindings/interrupt-controller/arm-gic.h \
+ scripts/dtc/include-prefixes/dt-bindings/memory/mt6779-larb-port.h \
+ scripts/dtc/include-prefixes/dt-bindings/gce/mt6779-gce.h \
+ scripts/dtc/include-prefixes/dt-bindings/phy/phy.h \
+ scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt6779-pinfunc.h \
+ scripts/dtc/include-prefixes/dt-bindings/pinctrl/mt65xx.h \
+ scripts/dtc/include-prefixes/dt-bindings/soc/mediatek,boot-mode.h \
+ scripts/dtc/include-prefixes/dt-bindings/interconnect/mtk,mt6779-emi.h \
+ scripts/dtc/include-prefixes/dt-bindings/usb/pd.h \
+ arch/arm64/boot/dts/mediatek/cust_mt6779_msdc.dtsi \
+ scripts/dtc/include-prefixes/dt-bindings/gpio/gpio.h \
+ arch/arm64/boot/dts/mediatek/trusty.dtsi \
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi \
+ scripts/dtc/include-prefixes/dt-bindings/iio/mt635x-auxadc.h \
+ arch/arm64/boot/dts/mediatek/bat_setting/mt6779_battery_prop.dtsi

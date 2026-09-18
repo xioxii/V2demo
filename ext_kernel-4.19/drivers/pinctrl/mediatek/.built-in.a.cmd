@@ -1,0 +1,1 @@
+cmd_drivers/pinctrl/mediatek/built-in.a :=  rm -f drivers/pinctrl/mediatek/built-in.a; aarch64-openwrt-linux-musl-ar rcSTPD drivers/pinctrl/mediatek/built-in.a drivers/pinctrl/mediatek/mtk-eint.o drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.o drivers/pinctrl/mediatek/pinctrl-paris.o drivers/pinctrl/mediatek/pinctrl-mtk-common-v2_debug.o drivers/pinctrl/mediatek/pinctrl-mt6880.o
